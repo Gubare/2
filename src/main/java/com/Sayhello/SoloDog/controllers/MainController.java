@@ -43,6 +43,12 @@ public class MainController {
         model.addAttribute("title", "Авторизация");
         return "enter";
     }
+    @PostMapping("/ENT/LK")
+    public String ENTLK(Model model) {
+        model.addAttribute("title", "Авторизация");
+        return "redirect:/LK";
+    }
+
 
     @GetMapping("/about")
     public String obo(Model model) {
