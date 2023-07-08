@@ -20,6 +20,21 @@ public class MainController {
         model.addAttribute("title", "Личный кабинет");
         return "account";
     }
+
+    @GetMapping("/EDT")
+    public String EDT(Model model) {
+        model.addAttribute("title", "Редактирование профиля");
+        return "editing";
+    }
+
+
+    @PostMapping("/EDT")
+    public String LKEDT(Model model) {
+        model.addAttribute("title", "Переход в редактирование");
+        return "redirect:/EDT";
+    }
+
+
     @GetMapping("/RG")
     public String RG(Model model) {
         model.addAttribute("title", "Регистрация");
@@ -32,9 +47,9 @@ public class MainController {
         return "redirect:/LK";
     }
 
-    @PostMapping("/RG/home")
-    public String RGhome(Model model) {
-        model.addAttribute("title", "Регистрация");
+    @PostMapping("/home")
+    public String redhome(Model model) {
+        model.addAttribute("title", "Переход на главную");
         return "redirect:/";
     }
 
@@ -45,15 +60,24 @@ public class MainController {
     }
     @PostMapping("/ENT/LK")
     public String ENTLK(Model model) {
-        model.addAttribute("title", "Авторизация");
+        model.addAttribute("title", "Переход в кабинет");
         return "redirect:/LK";
     }
 
-
     @GetMapping("/about")
     public String obo(Model model) {
-        model.addAttribute("title", "Авторизация");
+        model.addAttribute("title", "О нас");
         return "about";
+    }
+    @GetMapping("/WRD")
+    public String WRD(Model model) {
+        model.addAttribute("title", "Изучение слов");
+        return "word";
+    }
+    @GetMapping("/TXT")
+    public String TXT(Model model) {
+        model.addAttribute("title", "Изучение текстов");
+        return "text";
     }
 
 
