@@ -9,7 +9,7 @@
 <body  style="background-color: rgb(242, 226, 244);">
   <header th:insert="blocks/header :: header"></header>
   <div class="row mt-20">
-    <div class="col-md-8 offset-md-2 bg-danger bg-opacity-50">
+    <div th:each="user : ${user}" class="col-md-8 offset-md-2 bg-danger bg-opacity-50">
       <form action="/RG/LK" method="post">
         <h1 class="p-3 mb-2 text-dark fst-italic ">Изменение профиля
           <button type="submit" class="btn btn-warning position-absolute top-10 end-0">Выйти
@@ -20,12 +20,12 @@
           </button><br>
         </h1>
       </form>
-      <form  action="/RG/LK" method="post">
-        <input type="text" name="name" placeholder="Старый логин" class="form-control "><br>
-        <input type="text" name="password" placeholder="Старая почта" class="form-control "><br>
-        <input type="text" name="password" placeholder="Старый пароль" class="form-control "><br>
-        <input type="text" name="password" placeholder="Старая сложность" class="form-control "><br>
-        <input type="text" name="password" placeholder="Старый язык" class="form-control "><br>
+      <form   th:action="'/EDT/' + ${user.id}" method="post">
+        <input type="text" name="name" th:value="${user.name}" placeholder="Старый логин" class="form-control "><br>
+        <input type="text" name="mail" th:value="${user.mail}" placeholder="Старая почта" class="form-control "><br>
+        <input type="text" name="password" th:value="${user.password}" placeholder="Старый пароль" class="form-control "><br>
+        <input type="text" name="complexity" th:value="${user.complexity}" placeholder="Старая сложность" class="form-control "><br>
+        <input type="text" name="language" th:value="${user.language}" placeholder="Старый язык" class="form-control "><br>
         <button type="submit" class="btn btn-success">Подтвердить изменения</button><br>
         <div class="text-danger opacity-50"> .</div>
       </form>

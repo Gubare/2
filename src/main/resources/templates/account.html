@@ -10,7 +10,7 @@
 <body style="background-color: rgb(242, 226, 244);" >
 <header th:insert="blocks/header :: header"></header>
 <div class="container">
-  <div class="row mt-20">
+  <div th:each="user : ${user}" class="row mt-20">
     <div class="col-md-8 offset-md-2 bg-danger bg-opacity-50">
       <form action="/home" method="post">
         <h1 class="p-3 mb-2 text-dark fst-italic ">Личный кабинет пользователя
@@ -34,12 +34,13 @@
         </label>
         <input id="image" type="file" name="profile_photo" placeholder="Ваше фото" class="form-control " required="" capture>
       </div>
-      <h3 class="col">Логин:</h3>
-      <h3 class="col">Почта:</h3>
-      <h3 class="col">Прогресс:</h3>
-      <h3 class="col">Сложность:</h3>
-      <h3 class="col">Язык:</h3>
-      <form action="/EDT" method="post">
+      <h3 class="col" th:text="'Идентификатор: ' + ${user.id}"></h3>
+      <h3 class="col" th:text="'Логин: ' + ${user.name}"></h3>
+      <h3 class="col" th:text="'Почта: ' + ${user.mail}"></h3>
+      <h3 class="col" >Прогресс: ДОБАВИТЬ</h3>
+      <h3 class="col" th:text="'Сложность: ' + ${user.complexity}"></h3>
+      <h3 class="col" th:text="'Язык: ' + ${user.language}"></h3>
+      <form th:action="'/EDT/ENT/' + ${user.id}" method="post">
         <button type="submit" class="btn btn-warning position-absolute ">Редактировать профиль</button>
       </form>
       <h3 class="col">.</h3>
